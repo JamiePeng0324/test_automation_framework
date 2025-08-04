@@ -41,6 +41,7 @@ test_automation_framework/
 │   ├── allure-results/
 │   └── allure-report/
 ├── run_test.sh
+├── Jenkinsfile
 ├── pytest.ini
 ├── pyproject.toml
 ├── .gitattributes
