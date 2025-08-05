@@ -11,7 +11,17 @@ class TestSUM(AbstractTestBase):
         return {
             "testcase 1": {
                 "test_function_name": cls.test_sum,
-                "description": "Jamie self test about slb ip",
+                "description": "test sum",
+                # https://google.com
+            },
+            "testcase 2": {
+                "test_function_name": cls.test_string,
+                "description": "test string",
+                # https://google.com
+            },
+            "testcase 3": {
+                "test_function_name": cls.test_minus,
+                "description": "test minus",
                 # https://google.com
             },
         }
@@ -23,36 +33,37 @@ class TestSUM(AbstractTestBase):
         self.logger.info("----teardown----")
 
     @pytest.mark.no_setup
-    @allure.description("fjeifjie")
+    @allure.description("test sum")
     def test_sum(self):
-        x = 1 + 2
-        assert x == 3
+        with self.allure.step_with_log("Step1: test the result of sum."):
+            x = 1 + 2
+            self.assertion.assert_equal(x, 3, "wrong sum")
 
     @pytest.mark.no_setup
     @pytest.mark.no_teardown
-    @allure.description("jfieifeoijeoi")
+    @allure.description("test string")
     def test_string(self):
-        x = "jfeijfoejfoei"
-        assert x == "jfeijfoejfoei"
+        with self.allure.step_with_log("Step1: test the result of string."):
+            x = "jfeijfoejfoei"
+            self.assertion.assert_equal(x, "jfeijfoejfoei", "wrong string")
 
-    @allure.description("kofekckoko")
+    @allure.description("test minus")
     def test_minus(self):
-        with allure.step("step1 blablabla"):
+        with self.allure.step_with_log("Step1: input 5 to x."):
             self.logger.info("x = 5")
             x = 5
             time.sleep(1)
 
-        with allure.step("step2 blablbablablalba"):
+        with self.allure.step_with_log("Step2: input 2 to y."):
             self.logger.info("y = 2")
             y = 2
             time.sleep(1)
 
-        with allure.step("step3 kofekosk;"):
+        with self.allure.step_with_log("Step3: test the result of minus."):
             self.logger.info("z = x - y")
             z = x - y
             time.sleep(1)
-
-        assert z == 3
+            self.assertion.assert_equal(z, 3, "wrong minus")
 
     @allure.description("kfoekfoko")
     def test_string2(self):
