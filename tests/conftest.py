@@ -177,19 +177,19 @@ def pytest_sessionstart(session: Session) -> None:
     Returns:
         None
     """
-    ssh = Ssh()
-    ssh.connect_shell_via_jump(
-        hostname=APV_SERVER_CONFIG.server.host,
-        username=APV_SERVER_CONFIG.server.username,
-        password=APV_SERVER_CONFIG.server.password,
-        port=APV_SERVER_CONFIG.server.port
-    )
-    raw_dut_info = ssh.send_command_in_shell("show version")
-    parsed_os_info = __extract_arrayos_info(raw_dut_info)
-    parsed_dut_info = __extract_dut_info(raw_dut_info)
-    merged = parsed_os_info | parsed_dut_info
-    Allure.generate_environment_properties(env_info=merged)
-    ssh.disconnect()
+    # ssh = Ssh()
+    # ssh.connect_shell_via_jump(
+    #     hostname=APV_SERVER_CONFIG.server.host,
+    #     username=APV_SERVER_CONFIG.server.username,
+    #     password=APV_SERVER_CONFIG.server.password,
+    #     port=APV_SERVER_CONFIG.server.port
+    # )
+    # raw_dut_info = ssh.send_command_in_shell("show version")
+    # parsed_os_info = __extract_arrayos_info(raw_dut_info)
+    # parsed_dut_info = __extract_dut_info(raw_dut_info)
+    # merged = parsed_os_info | parsed_dut_info
+    # Allure.generate_environment_properties(env_info=merged)
+    # ssh.disconnect()
 
 def pytest_sessionfinish(session: Session, exitstatus: int) -> None:
     """
